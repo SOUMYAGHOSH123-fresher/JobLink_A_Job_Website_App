@@ -1,6 +1,6 @@
 🌍 Live URL
 The main branch is deployed at:
-🔗 https://joblink-pathtoemployment.netlify.app/
+🔗[ https://joblink-pathtoemployment.netlify.app/](https://67c0d53d9110a50008a31296--joblink-pathtoemployment.netlify.app/)
 
 
 # React + Vite
