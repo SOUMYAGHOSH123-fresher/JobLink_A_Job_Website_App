@@ -185,7 +185,7 @@ export const jobsData = [
             <li>Strong understanding of web security and performance optimization.</li>
             <li>Ability to work in an Agile environment.</li>
         </ol>`,
-        salary: 82000,
+        salary: 820000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -218,7 +218,7 @@ export const jobsData = [
             <li>Familiarity with machine learning techniques and algorithms.</li>
             <li>Excellent problem-solving and critical-thinking skills.</li>
         </ol>`,
-        salary: 72000,
+        salary: 720000,
         date: 1729681667114,
         category: "Data Science",
     },
@@ -251,7 +251,7 @@ export const jobsData = [
             <li>Excellent communication and teamwork skills.</li>
             <li>Creative problem-solving abilities.</li>
         </ol>`,
-        salary: 61000,
+        salary: 610000,
         date: 1729681667114,
         category: "Designing",
     },
@@ -284,7 +284,7 @@ export const jobsData = [
             <li>Familiarity with containerization technologies (e.g., Docker, Kubernetes).</li>
             <li>Excellent troubleshooting and analytical skills.</li>
         </ol>`,
-        salary: 53000,
+        salary: 530000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -317,7 +317,7 @@ export const jobsData = [
             <li>Familiarity with version control systems (e.g., Git).</li>
             <li>Excellent communication and teamwork abilities.</li>
         </ol>`,
-        salary: 91000,
+        salary: 910000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -350,7 +350,7 @@ export const jobsData = [
             <li>Excellent communication and teamwork abilities.</li>
             <li>Relevant certifications (e.g., CCNA, CCNP) are a plus.</li>
         </ol>`,
-        salary: 77000,
+        salary: 770000,
         date: 1729681667114,
         category: "Networking",
     },
@@ -383,7 +383,7 @@ export const jobsData = [
             <li>Excellent communication and interpersonal abilities.</li>
             <li>Certification in project management (e.g., PMP, Scrum Master) is preferred.</li>
         </ol>`,
-        salary: 60000,
+        salary: 600000,
         date: 1729681667114,
         category: "Management",
     },
@@ -416,7 +416,7 @@ export const jobsData = [
             <li>Excellent problem-solving skills and attention to detail.</li>
             <li>Familiarity with version control systems (e.g., Git).</li>
         </ol>`,
-        salary: 112000,
+        salary: 1120000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -449,7 +449,7 @@ export const jobsData = [
             <li>Excellent analytical and problem-solving skills.</li>
             <li>Relevant certifications (e.g., AWS Certified Solutions Architect) are preferred.</li>
         </ol>`,
-        salary: 96000,
+        salary: 960000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -482,7 +482,7 @@ export const jobsData = [
             <li>Strong communication and collaboration abilities.</li>
             <li>Attention to detail and a commitment to quality.</li>
         </ol>`,
-        salary: 72000,
+        salary: 720000,
         date: 1729681667114,
         category: "Marketing",
     },
@@ -515,7 +515,7 @@ export const jobsData = [
             <li>Excellent problem-solving and analytical skills.</li>
             <li>Relevant certifications (e.g., CISSP, CEH) are a plus.</li>
         </ol>`,
-        salary: 62000,
+        salary: 620000,
         date: 1729681667114,
         category: "Cybersecurity",
     },
@@ -548,7 +548,7 @@ export const jobsData = [
             <li>Experience with data analysis and reporting.</li>
             <li>Familiarity with Agile methodologies is a plus.</li>
         </ol>`,
-        salary: 68000,
+        salary: 680000,
         date: 1729681667114,
         category: "Management",
     },
@@ -581,7 +581,7 @@ export const jobsData = [
             <li>Creative thinking and problem-solving abilities.</li>
             <li>Willingness to learn and adapt in a fast-paced environment.</li>
         </ol>`,
-        salary: 77000,
+        salary: 770000,
         date: 1729681667114,
         category: "Marketing",
     },
@@ -614,7 +614,7 @@ export const jobsData = [
             <li>Excellent problem-solving skills and attention to detail.</li>
             <li>Ability to communicate complex concepts to non-technical audiences.</li>
         </ol>`,
-        salary: 65000,
+        salary: 650000,
         date: 1729681667114,
         category: "Data Science",
     },
@@ -647,7 +647,7 @@ export const jobsData = [
             <li>Excellent communication skills and ability to work collaboratively.</li>
             <li>A portfolio showcasing relevant design projects is required.</li>
         </ol>`,
-        salary: 64000,
+        salary: 640000,
         date: 1729681667114,
         category: "Design",
     },
@@ -680,7 +680,7 @@ export const jobsData = [
             <li>Excellent troubleshooting and problem-solving skills.</li>
             <li>Relevant certifications (e.g., AWS Certified DevOps Engineer) are a plus.</li>
         </ol>`,
-        salary: 74000,
+        salary: 740000,
         date: 1729681667114,
         category: "Programming",
     },
@@ -713,7 +713,7 @@ export const jobsData = [
             <li>Experience with CRM software (e.g., Salesforce).</li>
             <li>A results-oriented mindset with a focus on meeting targets.</li>
         </ol>`,
-        salary: 59000,
+        salary: 590000,
         date: 1729681667114,
         category: "Marketing",
     },
@@ -746,7 +746,7 @@ export const jobsData = [
             <li>Ability to maintain confidentiality and handle sensitive information.</li>
             <li>Attention to detail and strong organizational skills.</li>
         </ol>`,
-        salary: 89000,
+        salary: 890000,
         date: 1729681667114,
         category: "Management",
     },
@@ -779,7 +779,7 @@ export const jobsData = [
             <li>Excellent analytical skills and ability to interpret data.</li>
             <li>Strong leadership and project management skills.</li>
         </ol>`,
-        salary: 99000,
+        salary: 990000,
         date: 1729681667114,
         category: "Marketing",
     },
@@ -812,7 +812,7 @@ export const jobsData = [
             <li>Excellent communication and collaboration skills.</li>
             <li>A portfolio showcasing relevant design work is required.</li>
         </ol>`,
-        salary: 91000,
+        salary: 910000,
         date: 1729681667114,
         category: "Design",
     },
@@ -878,7 +878,7 @@ export const jobsData = [
             <li>Excellent analytical and troubleshooting skills.</li>
             <li>Strong communication skills to work with technical and non-technical teams.</li>
         </ol>`,
-        salary: 87000,
+        salary: 870000,
         date: 1729681667114,
         category: "Cybersecurity",
     },
@@ -911,7 +911,7 @@ export const jobsData = [
             <li>Experience with container orchestration tools like Kubernetes.</li>
             <li>Good problem-solving skills and attention to detail.</li>
         </ol>`,
-        salary: 102000,
+        salary: 502000,
         date: 1729681667114,
         category: "Programming",
     }
