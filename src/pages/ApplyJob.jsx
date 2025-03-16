@@ -11,7 +11,6 @@ import moment from 'moment';
 import JobCard from '../components/JobCard';
 
 const ApplyJob = () => {
-
   const { id } = useParams();
   const [jobData, setJobData] = useState(null)
   const { jobs } = useContext(AppContext);
