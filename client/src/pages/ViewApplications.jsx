@@ -21,14 +21,14 @@ function ViewApplications() {
               <tr key={index} className={`text-gray-700 hover hover:bg-gray-300 ${index % 2 === 0 ? 'bg-gray-200' : ''}`}>
                 <td className='py-2 px-4 border-b '>{index + 1}</td>
                 <td className='py-2 px-4 border-b flex'>
-                  <img className='w-10 h-10 rounded-full mr-3 max-sm:hidden' src={applicant.imgSrc}/>
+                  <img className='w-10 h-10 rounded-full mr-3 max-sm:hidden' src={applicant.imgSrc} />
                   <span className='mt-3'>{applicant.name}</span>
                 </td>
                 <td className='py-2 px-4 border-b  max-sm:hidden'>{applicant.jobTitle}</td>
                 <td className='py-2 px-4 border-b  max-sm:hidden'>{applicant.location}</td>
-                <td className='px-4 py-2 mb-3 flex'>
-                  <a href="" target='_blank' className=' text-blue-400 px-3 py-1 rounded inline-flex gap-2 items-center'>
-                    Resume <img src={assets.resume_download_icon} alt="" />
+                <td className='px-4 py-2 mb-3 fiex'>
+                  <a href="#" target='_blank' className=' text-blue-400 px-3 py-1 rounded inline-flex gap-2 text-left items-center'>
+                    Resume <img src={assets.resume_download_icon} />
                   </a>
                 </td>
                 <td className='py-2 px-4 border-b relative'>
