@@ -18,7 +18,7 @@ export const getJobs = async (req, res) => {
 // Get a sinsle job by ID
 export const getJobById = async (req, res) => { 
     try {
-        const id = req.params;
+        const { id } = req.params;
         const job = await Job
             .findById(id)
             .populate({ path: 'companyId', select: '-password' });
