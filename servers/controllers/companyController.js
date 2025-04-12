@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import {v2 as cloudinary} from 'cloudinary';
 import generateToken from "../utils/generateToken.js";
 import Job from '../models/Job.js';
+import JobApplication from './../models/JobApplication.js';
 
 // Register Company
 export const registerCompany = async (req, res) => { 
@@ -53,7 +54,13 @@ export const loginCompany = async (req, res) => {
     const { email, password } = req.body;
     try {
         const company = await Company.findOne({ email });
-        if (bcrypt.compare(password, company.password)) {
+
+        // change this to check if the company is registered
+        if (!company) {
+            return res.json({ success: false, message: "Invalid Email or Password" });
+        }
+        
+        if (await bcrypt.compare(password, company.password)) {
             res.json({
                 success: true,
                 company: {
@@ -107,15 +114,20 @@ export const postJob = async (req, res) => {
 export const getCompanyJobApplicants = async (req, res) => {}
 
 // Get Company Posted Jobs
-export const getCompanyPostedJobs = async (req, res) => { 
+export const getCompanyPostedJobs = async (req, res) => {
     try {
         const companyId = req.company._id;
         const jobs = await Job.find({ companyId });
 
         // Adding no of applicants into the data
-        res.json({ success: true, jobsData: jobs });
+        const jobsData = await Promise.all(jobs.map(async (job) => {
+            const applicants = await JobApplication.find({ jobId: job._id });
+            return { ...job.toObject(), applicants: applicants.length }
+        }))
+
+        res.json({ success: true, jobsData });
     } catch (error) {
-        res.json({success:false, message: error.message});
+        res.json({ success: false, message: error.message });
     }
 }
 
@@ -127,14 +139,25 @@ export const changeVisibility = async (req, res) => {
     try {
         const { id } = req.body;
         const companyId = req.company._id;
+        
+        if (!id) {
+            return res.json({ success: false, message: "Job ID is required" });
+        }
+
         const job = await Job.findById(id);
+        if (!job) {
+            return res.json({ success: false, message: "Job not found" });
+        }
+
         if (companyId.toString() === job.companyId.toString()) {
             job.visible = !job.visible;
+            await job.save();
+            return res.json({ success: true, job });
+        } else {
+            return res.json({ success: false, message: "Unauthorized to change this job's visibility" });
         }
-        await job.save();
-        res.json({ success: true, job });
     } catch (error) {
-        res.json({ success: true, message: error.message });
+        res.json({ success: false, message: error.message });
     }
 }
 

@@ -21,7 +21,12 @@ await connectCloudinary()
 // Middlewares
 app.use(cors())
 app.use(express.json())
-app.use(clerkMiddleware())
+
+// Use Clerk middleware with proper configuration
+app.use(clerkMiddleware({
+  // Add debug mode to see what's happening
+  debug: true
+}));
 
 // Routes
 app.get('/', (req, res) => res.send("API Working"));
@@ -43,3 +48,4 @@ Sentry.setupExpressErrorHandler(app);
 app.listen(port, ()=>{
     console.log(`Server Running on Port ${port}`);
 })
+
