@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from './../context/AppContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Loading from '../components/Loading';
 
 function ManageJobs() {
 
@@ -59,7 +60,10 @@ function ManageJobs() {
     }
   }, [companyToken])
 
-  return (
+  return jobs ? jobs.length === 0 ? (
+  <div className='flex items-center justify-center h-[70vh]'>
+    <p className='text-xl text-red-500 sm:text-2xl'>No Jobs Available or Posted</p>
+  </div>) : (
     <div className='container max-w-5xl p-4'>
       <div className='overflow-x-auto'>
         <table className='min-w-full bg-white border border-gray-200 max-sm:text-sm'>
@@ -93,7 +97,7 @@ function ManageJobs() {
         <button onClick={() => navigate('/dashboard/add-job')} className='bg-black text-white py-2 px-4 rounded'>Add new jobbs</button>
       </div>
     </div>
-  )
+  ) : <Loading/>
 }
 
 export default ManageJobs
