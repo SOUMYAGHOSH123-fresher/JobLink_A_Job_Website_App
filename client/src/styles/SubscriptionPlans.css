@@ -1,0 +1,136 @@
+.subscription-plans {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subscription-plans h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.current-subscription {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.current-subscription h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.price {
+  font-size: 2rem;
+  color: #3498db;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
+}
+
+.plan-card li {
+  padding: 0.5rem 0;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+
+.plan-card li:before {
+  content: "✓";
+  color: #2ecc71;
+  margin-right: 0.5rem;
+}
+
+.subscribe-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+  background-color: #2980b9;
+}
+
+.subscribe-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+}
+
+.cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #c0392b;
+}
+
+.error {
+  color: #e74c3c;
+  text-align: center;
+  padding: 1rem;
+  background-color: #fde8e8;
+  border-radius: 5px;
+  margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .subscription-plans {
+    padding: 1rem;
+  }
+  
+  .plans-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .plan-card {
+    padding: 1.5rem;
+  }
+} 
