@@ -183,7 +183,7 @@ export const postJob = async (req, res) => {
             job: newJob
         });
     } catch (error) {
-        console.error('Error posting job:', error);
+        // console.error('Error posting job:', error);
         res.status(500).json({ message: 'Error posting job' });
     }
 };
@@ -314,7 +314,7 @@ export const upgradePlan = async (req, res) => {
             planEndDate: company.planEndDate
         });
     } catch (error) {
-        console.error('Error upgrading plan:', error);
+        // console.error('Error upgrading plan:', error);
         res.status(500).json({ message: 'Error upgrading plan' });
     }
 };
@@ -336,7 +336,7 @@ export const getPlanStatus = async (req, res) => {
             planEndDate: company.planEndDate
         });
     } catch (error) {
-        console.error('Error getting plan status:', error);
+        // console.error('Error getting plan status:', error);
         res.status(500).json({ message: 'Error getting plan status' });
     }
 };
@@ -376,7 +376,7 @@ export const updatePlan = async (req, res) => {
             }
         });
     } catch (error) {
-        console.error('Plan update error:', error);
+        // console.error('Plan update error:', error);
         res.status(500).json({ message: 'Error updating plan' });
     }
 };
@@ -402,7 +402,7 @@ export const getCompanyProfile = async (req, res) => {
             }
         });
     } catch (error) {
-        console.error('Get company profile error:', error);
+        // console.error('Get company profile error:', error);
         res.status(500).json({ message: 'Error fetching company profile' });
     }
 };

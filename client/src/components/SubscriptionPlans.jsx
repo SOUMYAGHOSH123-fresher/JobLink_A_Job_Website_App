@@ -33,7 +33,7 @@ const SubscriptionPlans = () => {
         }
       } catch (err) {
         setError('Failed to load subscription plans');
-        console.error('Error fetching plans:', err);
+        // console.error('Error fetching plans:', err);
         toast.error(err.response?.data?.message || 'Failed to load subscription plans');
       } finally {
         setLoading(false);
@@ -64,7 +64,7 @@ const SubscriptionPlans = () => {
       setCurrentSubscription(subscriptionResponse.data);
       toast.success('Successfully subscribed to plan!');
     } catch (err) {
-      console.error('Error subscribing:', err);
+      // console.error('Error subscribing:', err);
       toast.error(err.response?.data?.message || 'Failed to subscribe to plan');
     }
   };
@@ -85,7 +85,7 @@ const SubscriptionPlans = () => {
       setCurrentSubscription(null);
       toast.success('Subscription cancelled successfully');
     } catch (err) {
-      console.error('Error cancelling subscription:', err);
+      // console.error('Error cancelling subscription:', err);
       toast.error(err.response?.data?.message || 'Failed to cancel subscription');
     }
   };
