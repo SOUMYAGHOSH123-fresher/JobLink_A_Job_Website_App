@@ -110,7 +110,7 @@ export const applyForJob = async (req, res) => {
         
         console.log('Application created successfully:', application);
         res.json({ success: true, message: 'Applied Successfully' });
-
+        
     } catch (error) {
         console.error('Error applying for job:', error);
         console.error('Error details:', {

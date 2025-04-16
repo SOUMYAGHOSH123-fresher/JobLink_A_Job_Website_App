@@ -22,7 +22,7 @@ export const AppContextProvider = (props) => {
     const [companyData, setCompanyData] = useState(null);
 
     const [userData, setUserData] = useState(null);
-    const [userApplications, setUserApplications] = useState([]);;
+    const [userApplications, setUserApplications] = useState([]);
 
 
     // function to fetch jobs
@@ -64,8 +64,8 @@ export const AppContextProvider = (props) => {
             
             if (!token) {
                 console.error('No token received from Clerk');
-                toast.error('Authentication failed. Please try logging in again.');
-                return;
+                return toast.error('Authentication failed. Please try logging in again.');
+                
             }            
             console.log('Got token from Clerk');
             
@@ -104,6 +104,24 @@ export const AppContextProvider = (props) => {
         }
     }
 
+
+    // function to fetch user's Application data
+    const fetchUserApplications = async () => {
+        try {
+            const token = await getToken();
+            const { data } = await axios.get(backendUrl + '/api/users/applications', 
+                {headers:{Authorization: `Bearer ${token}`}}
+            )
+            if (data.success) {
+                setUserApplications(data.applications.reverse());
+            } else {
+                toast.error(data.message); 
+            }
+        } catch (error) {
+            toast.error(error.message);
+        }
+    } 
+
     useEffect(() => {
         fetchJobs();
         const storedCompanyToken = localStorage.getItem('companyToken');
@@ -121,6 +139,7 @@ export const AppContextProvider = (props) => {
     useEffect(() => {
         if (user) {
             fetchUserData();
+            fetchUserApplications();
         }
     }, [user])
 
@@ -133,7 +152,9 @@ export const AppContextProvider = (props) => {
         companyData, setCompanyData,
         userData, setUserData,
         userApplications, setUserApplications,
-        backendUrl, fetchUserData
+        backendUrl,
+        fetchUserData,
+        fetchUserApplications
     }
 
     return (
