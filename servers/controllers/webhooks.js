@@ -12,7 +12,7 @@ export const clerkWebhooks = async (req, res) => {
         const svix_signature = req.headers["svix-signature"];
 
         if (!svix_id || !svix_timestamp || !svix_signature) {
-            return res.status(400).json({ success: false, message: "Missing webhook headers" });
+            return res.json({ success: false, message: "Missing webhook headers" });
         }
 
         // Verify the webhook
@@ -57,7 +57,7 @@ export const clerkWebhooks = async (req, res) => {
                     await User.findByIdAndUpdate(data.id, userData);
                     return res.json({ success: true, message: "User updated successfully" });
                 } catch (error) {
-                    console.error('Error updating user:', error);
+                    // console.error('Error updating user:', error);
                     return res.json({ success: false, message: "Error updating user" });
                 }
             }
@@ -76,7 +76,7 @@ export const clerkWebhooks = async (req, res) => {
                 return res.json({ success: true, message: "Webhook received" });
         }
     } catch (error) {
-        console.error('Webhook Error:', error);
+        // console.error('Webhook Error:', error);
         return res.json({ success: false, message: error.message });
     }
 }

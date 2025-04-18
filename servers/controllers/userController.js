@@ -9,7 +9,7 @@ export const getUserData = async (req, res) => {
     try {
         // Check if auth object exists
         if (!req.auth) {
-            console.error('No auth object found in request');
+            // console.error('No auth object found in request');
             return res.status(401).json({ success: false, message: 'Authentication required' });
         }
 
@@ -21,8 +21,8 @@ export const getUserData = async (req, res) => {
         const userId = req.auth.userId || req.auth.id || req.auth.sub;
         
         if (!userId) {
-            console.error('No userId found in auth object');
-            return res.status(401).json({ success: false, message: 'User ID not found' });
+            // console.error('No userId found in auth object');
+            return res.json({ success: false, message: 'User ID not found' });
         }
 
         // console.log('Looking up user with ID:', userId);
@@ -31,7 +31,7 @@ export const getUserData = async (req, res) => {
         const user = await User.findById(userId);
         
         if (!user) {
-            console.log('User not found in database, attempting to create');
+            // console.log('User not found in database, attempting to create');
             
             // Try to create the user if they don't exist
             try {
@@ -50,7 +50,7 @@ export const getUserData = async (req, res) => {
                 return res.json({ success: true, user: newUser });
             } catch (createError) {
                 // console.error('Error creating user:', createError);
-                return res.status(500).json({ 
+                return res.json({ 
                     success: false, 
                     message: 'Error creating user: ' + createError.message 
                 });
@@ -61,7 +61,7 @@ export const getUserData = async (req, res) => {
         return res.json({ success: true, user });
     } catch (error) {
         // console.error('Error in getUserData:', error);
-        return res.status(500).json({ 
+        return res.json({ 
             success: false, 
             message: 'Server error: ' + error.message
         });
