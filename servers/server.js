@@ -15,10 +15,6 @@ import { clerkMiddleware } from '@clerk/express';
 // initialize express
 const app = express();
 
-// Connect to database
-await connectDB();
-await connectCloudinary()
-
 // Middlewares
 app.use(cors())
 app.use(express.json())
@@ -47,7 +43,27 @@ const port = process.env.PORT || 5000
 
 Sentry.setupExpressErrorHandler(app);
 
-app.listen(port, ()=>{
-    console.log(`Server Running on Port ${port}`);
-})
+// Connect to database and start server
+const startServer = async () => {
+  try {
+    // Connect to database
+    await connectDB();
+    
+    // Connect to Cloudinary
+    await connectCloudinary();
+    
+    // Start the server
+    app.listen(port, () => {
+      console.log(`Server Running on Port ${port}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error);
+    // Still start the server even if database connection fails
+    app.listen(port, () => {
+      console.log(`Server Running on Port ${port} (without database connection)`);
+    });
+  }
+};
+
+startServer();
 
