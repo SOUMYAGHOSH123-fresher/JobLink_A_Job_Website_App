@@ -1,8 +1,4 @@
-🌍 Live URL
-The main branch is deployed at: 🔗[https://joblink-pathtoemployment.netlify.app/]
-
 # JobLink - Job Website Application
-
 JobLink is a modern job board platform that connects job seekers with employers. It provides a seamless experience for both job seekers looking for opportunities and companies looking to hire talent.
 
 ## 🌟 Features
