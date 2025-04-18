@@ -17,7 +17,7 @@ export const getSubscriptionPlans = async (req, res) => {
         res.json(plans);
     } catch (error) {
         // console.error('Error getting subscription plans:', error);
-        res.status(500).json({ message: 'Error getting subscription plans' });
+        res.json({ message: 'Error getting subscription plans' });
     }
 };
 
@@ -28,16 +28,16 @@ export const subscribeToPlan = async (req, res) => {
         const companyId = req.company._id;
 
         if (!companyId) {
-            return res.status(400).json({ message: 'Company ID is required' });
+            return res.json({ message: 'Company ID is required' });
         }
 
         if (!Object.values(PLANS).includes(planId)) {
-            return res.status(400).json({ message: 'Invalid plan ID' });
+            return res.json({ message: 'Invalid plan ID' });
         }
 
         const company = await Company.findById(companyId);
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Check if company already has an active subscription
@@ -47,7 +47,7 @@ export const subscribeToPlan = async (req, res) => {
         });
 
         if (existingSubscription) {
-            return res.status(400).json({ message: 'Company already has an active subscription' });
+            return res.json({ message: 'Company already has an active subscription' });
         }
 
         // Create new subscription
@@ -70,10 +70,10 @@ export const subscribeToPlan = async (req, res) => {
         company.jobPostingsRemaining = subscription.jobPostingsRemaining;
         await company.save();
 
-        res.status(201).json(subscription);
+        res.json(subscription);
     } catch (error) {
         // console.error('Error subscribing to plan:', error);
-        res.status(500).json({ message: 'Error subscribing to plan' });
+        res.json({ message: 'Error subscribing to plan' });
     }
 };
 
@@ -83,7 +83,7 @@ export const getSubscriptionStatus = async (req, res) => {
         const companyId = req.company._id;
 
         if (!companyId) {
-            return res.status(400).json({ message: 'Company ID is required' });
+            return res.json({ message: 'Company ID is required' });
         }
 
         const subscription = await Subscription.findOne({
@@ -92,7 +92,7 @@ export const getSubscriptionStatus = async (req, res) => {
         });
 
         if (!subscription) {
-            return res.status(404).json({ message: 'No active subscription found' });
+            return res.json({ message: 'No active subscription found' });
         }
 
         const subscriptionStatus = {
@@ -107,7 +107,7 @@ export const getSubscriptionStatus = async (req, res) => {
         res.json(subscriptionStatus);
     } catch (error) {
         // console.error('Error getting subscription status:', error);
-        res.status(500).json({ message: 'Error getting subscription status' });
+        res.json({ message: 'Error getting subscription status' });
     }
 };
 
@@ -117,7 +117,7 @@ export const cancelSubscription = async (req, res) => {
         const companyId = req.company._id;
 
         if (!companyId) {
-            return res.status(400).json({ message: 'Company ID is required' });
+            return res.json({ message: 'Company ID is required' });
         }
 
         const subscription = await Subscription.findOne({
@@ -126,7 +126,7 @@ export const cancelSubscription = async (req, res) => {
         });
 
         if (!subscription) {
-            return res.status(404).json({ message: 'No active subscription found' });
+            return res.json({ message: 'No active subscription found' });
         }
 
         // Update subscription status
@@ -146,6 +146,6 @@ export const cancelSubscription = async (req, res) => {
         res.json({ message: 'Subscription cancelled successfully' });
     } catch (error) {
         // console.error('Error cancelling subscription:', error);
-        res.status(500).json({ message: 'Error cancelling subscription' });
+        res.json({ message: 'Error cancelling subscription' });
     }
 }; 
