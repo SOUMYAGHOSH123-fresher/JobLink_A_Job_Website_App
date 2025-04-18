@@ -16,7 +16,7 @@ export const getSubscriptionPlans = async (req, res) => {
 
         res.json(plans);
     } catch (error) {
-        console.error('Error getting subscription plans:', error);
+        // console.error('Error getting subscription plans:', error);
         res.status(500).json({ message: 'Error getting subscription plans' });
     }
 };
@@ -72,7 +72,7 @@ export const subscribeToPlan = async (req, res) => {
 
         res.status(201).json(subscription);
     } catch (error) {
-        console.error('Error subscribing to plan:', error);
+        // console.error('Error subscribing to plan:', error);
         res.status(500).json({ message: 'Error subscribing to plan' });
     }
 };
@@ -106,7 +106,7 @@ export const getSubscriptionStatus = async (req, res) => {
 
         res.json(subscriptionStatus);
     } catch (error) {
-        console.error('Error getting subscription status:', error);
+        // console.error('Error getting subscription status:', error);
         res.status(500).json({ message: 'Error getting subscription status' });
     }
 };
@@ -145,7 +145,7 @@ export const cancelSubscription = async (req, res) => {
 
         res.json({ message: 'Subscription cancelled successfully' });
     } catch (error) {
-        console.error('Error cancelling subscription:', error);
+        // console.error('Error cancelling subscription:', error);
         res.status(500).json({ message: 'Error cancelling subscription' });
     }
 }; 

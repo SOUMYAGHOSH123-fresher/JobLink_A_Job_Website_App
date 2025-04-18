@@ -63,11 +63,11 @@ export const AppContextProvider = (props) => {
             const token = await getToken();
             
             if (!token) {
-                // console.error('No token received from Clerk');
+                console.error('No token received from Clerk');
                 return toast.error('Authentication failed. Please try logging in again.');
                 
             }            
-            // console.log('Got token from Clerk');
+            console.log('Got token from Clerk');
             
             // Make the API request with the token in the Authorization header
             const { data } = await axios.get(backendUrl + '/api/users/user', {
@@ -78,7 +78,7 @@ export const AppContextProvider = (props) => {
             
             if (data.success) {
                 setUserData(data.user);
-                // console.log('User data fetched successfully');
+                console.log('User data fetched successfully');
             } else {
                 // console.error('Error fetching user data:', data.message);
                 toast.error(data.message);
