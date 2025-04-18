@@ -43,7 +43,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/subscriptions', subscriptionRoutes);
 
 // Port
-const port = process.env.port || 5000
+const port = process.env.PORT || 5000
 
 Sentry.setupExpressErrorHandler(app);
 

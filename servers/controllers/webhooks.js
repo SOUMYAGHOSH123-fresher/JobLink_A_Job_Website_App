@@ -38,12 +38,12 @@ export const clerkWebhooks = async (req, res) => {
                     const existingUser = await User.findById(data.id);
                     if (!existingUser) {
                         await User.create(userData);
-                        console.log('User created successfully:', userData);
+                        console.log('User created successfully');
                     }
                     return res.json({ success: true, message: "User created successfully" });
                 } catch (error) {
-                    console.error('Error creating user:', error);
-                    return res.status(500).json({ success: false, message: "Error creating user" });
+                    // console.error('Error creating user:', error);
+                    return res.json({ success: false, message: "Error creating user" });
                 }
             }
 
@@ -58,7 +58,7 @@ export const clerkWebhooks = async (req, res) => {
                     return res.json({ success: true, message: "User updated successfully" });
                 } catch (error) {
                     console.error('Error updating user:', error);
-                    return res.status(500).json({ success: false, message: "Error updating user" });
+                    return res.json({ success: false, message: "Error updating user" });
                 }
             }
 
@@ -67,8 +67,8 @@ export const clerkWebhooks = async (req, res) => {
                     await User.findByIdAndDelete(data.id);
                     return res.json({ success: true, message: "User deleted successfully" });
                 } catch (error) {
-                    console.error('Error deleting user:', error);
-                    return res.status(500).json({ success: false, message: "Error deleting user" });
+                    // console.error('Error deleting user:', error);
+                    return res.json({ success: false, message: "Error deleting user" });
                 }
             }
 
@@ -77,6 +77,6 @@ export const clerkWebhooks = async (req, res) => {
         }
     } catch (error) {
         console.error('Webhook Error:', error);
-        return res.status(500).json({ success: false, message: error.message });
+        return res.json({ success: false, message: error.message });
     }
 }

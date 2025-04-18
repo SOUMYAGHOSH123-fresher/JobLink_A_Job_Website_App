@@ -31,7 +31,7 @@ export const AppContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/api/jobs');
             if (data.success) {
                 setJobs(data.jobs);
-                console.log(data.jobs);                
+                // console.log(data.jobs);                
             } else {
                 toast.error(data.message);
             }
@@ -47,7 +47,7 @@ export const AppContextProvider = (props) => {
             const { data } = await axios.get(backendUrl + '/api/company/company', { headers: { token: companyToken } });
             if (data.success) {
                 setCompanyData(data.company);
-                console.log(data);                
+                // console.log(data);                
             } else {
                 toast.error(data.message);
             }
@@ -80,25 +80,24 @@ export const AppContextProvider = (props) => {
                 setUserData(data.user);
                 console.log('User data fetched successfully');
             } else {
-                console.error('Error fetching user data:', data.message);
+                // console.error('Error fetching user data:', data.message);
                 toast.error(data.message);
             }
         } catch (error) {
-            console.error('Error in fetchUserData:', error);
+            // console.error('Error in fetchUserData:', error);
             
             // Handle specific error cases
             if (error.response) {
                 // The request was made and the server responded with a status code
                 // that falls out of the range of 2xx
-                console.error('Error response:', error.response.data);
+                // console.error('Error response:', error.response.data);
                 toast.error(error.response.data.message || 'Failed to fetch user data');
             } else if (error.request) {
                 // The request was made but no response was received
-                console.error('No response received:', error.request);
                 toast.error('No response from server. Please try again later.');
             } else {
                 // Something happened in setting up the request that triggered an Error
-                console.error('Error setting up request:', error.message);
+                // console.error('Error setting up request:', error.message);
                 toast.error('Error setting up request: ' + error.message);
             }
         }

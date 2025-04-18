@@ -7,27 +7,27 @@ export const checkJobPostingLimit = async (req, res, next) => {
         const company = await Company.findById(companyId);
 
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Check if company has an active plan
         if (!company.isActive || company.planEndDate < new Date()) {
-            return res.status(403).json({ 
+            return res.json({ 
                 message: 'Your plan has expired. Please upgrade to continue posting jobs.' 
             });
         }
 
         // Check remaining job postings
         if (company.jobPostingsRemaining <= 0) {
-            return res.status(403).json({ 
+            return res.json({ 
                 message: 'You have reached your job posting limit. Please upgrade your plan to post more jobs.' 
             });
         }
 
         next();
     } catch (error) {
-        console.error('Error in checkJobPostingLimit middleware:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        // console.error('Error in checkJobPostingLimit middleware:', error);
+        res.json({ message: 'Internal server error' });
     }
 };
 
@@ -41,7 +41,7 @@ export const updateJobPostingCount = async (companyId) => {
         company.jobPostingsRemaining -= 1;
         await company.save();
     } catch (error) {
-        console.error('Error updating job posting count:', error);
+        // console.error('Error updating job posting count:', error);
         throw error;
     }
 };
@@ -53,12 +53,12 @@ export const validatePlanUpgrade = async (req, res, next) => {
         const company = await Company.findById(companyId);
 
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Validate plan exists
         if (!Object.values(PLANS).includes(newPlan)) {
-            return res.status(400).json({ message: 'Invalid plan selected' });
+            return res.json({ message: 'Invalid plan selected' });
         }
 
         // Prevent downgrading to free plan if company has active job postings
@@ -69,7 +69,7 @@ export const validatePlanUpgrade = async (req, res, next) => {
             });
             
             if (activeJobCount > 1) {
-                return res.status(400).json({ 
+                return res.json({ 
                     message: 'Cannot downgrade to free plan while having more than 1 active job posting' 
                 });
             }
@@ -77,7 +77,7 @@ export const validatePlanUpgrade = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.error('Error in validatePlanUpgrade middleware:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        // console.error('Error in validatePlanUpgrade middleware:', error);
+        res.json({ message: 'Internal server error' });
     }
 }; 

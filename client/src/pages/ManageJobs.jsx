@@ -22,7 +22,7 @@ function ManageJobs() {
       )
       if (data.success) {
         setJobs(data.jobsData.reverse());
-        console.log(data.jobsData);
+        // console.log(data.jobsData);
         // console.log(jobs);        
       } else {
         toast.error(data.message);
