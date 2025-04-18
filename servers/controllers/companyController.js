@@ -141,19 +141,19 @@ export const postJob = async (req, res) => {
         // Get company to check plan limits
         const company = await Company.findById(companyId);
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Check if plan is expired
         if (new Date() > company.planEndDate) {
-            return res.status(403).json({ 
+            return res.json({ 
                 message: 'Your plan has expired. Please upgrade to continue posting jobs.' 
             });
         }
 
         // Check if job posting limit is reached
         if (company.usedJobPostings >= company.jobPostingLimit) {
-            return res.status(403).json({ 
+            return res.json({ 
                 message: 'You have reached your job posting limit. Please upgrade your plan to post more jobs.' 
             });
         }
@@ -178,13 +178,13 @@ export const postJob = async (req, res) => {
         company.usedJobPostings += 1;
         await company.save();
 
-        res.status(201).json({
+        res.json({
             message: 'Job posted successfully',
             job: newJob
         });
     } catch (error) {
         // console.error('Error posting job:', error);
-        res.status(500).json({ message: 'Error posting job' });
+        res.json({ message: 'Error posting job' });
     }
 };
 
@@ -273,13 +273,13 @@ export const upgradePlan = async (req, res) => {
         // Validate plan type
         const validPlans = ['free', 'starter', 'professional', 'enterprise'];
         if (!validPlans.includes(plan)) {
-            return res.status(400).json({ message: 'Invalid plan type' });
+            return res.json({ message: 'Invalid plan type' });
         }
 
         // Get company
         const company = await Company.findById(companyId);
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Set plan limits based on plan type
@@ -307,7 +307,7 @@ export const upgradePlan = async (req, res) => {
 
         await company.save();
 
-        res.status(200).json({
+        res.json({
             message: 'Plan upgraded successfully',
             plan: company.plan,
             jobPostingLimit: company.jobPostingLimit,
@@ -315,7 +315,7 @@ export const upgradePlan = async (req, res) => {
         });
     } catch (error) {
         // console.error('Error upgrading plan:', error);
-        res.status(500).json({ message: 'Error upgrading plan' });
+        res.json({ message: 'Error upgrading plan' });
     }
 };
 
@@ -325,10 +325,10 @@ export const getPlanStatus = async (req, res) => {
 
         const company = await Company.findById(companyId);
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
-        res.status(200).json({
+        res.json({
             plan: company.plan,
             jobPostingLimit: company.jobPostingLimit,
             usedJobPostings: company.usedJobPostings,
@@ -337,7 +337,7 @@ export const getPlanStatus = async (req, res) => {
         });
     } catch (error) {
         // console.error('Error getting plan status:', error);
-        res.status(500).json({ message: 'Error getting plan status' });
+        res.json({ message: 'Error getting plan status' });
     }
 };
 
@@ -348,12 +348,12 @@ export const updatePlan = async (req, res) => {
         const companyId = req.company.id;
 
         if (!PLAN_LIMITS[plan]) {
-            return res.status(400).json({ message: 'Invalid plan selected' });
+            return res.json({ message: 'Invalid plan selected' });
         }
 
         const company = await Company.findById(companyId);
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         // Update plan details
@@ -377,7 +377,7 @@ export const updatePlan = async (req, res) => {
         });
     } catch (error) {
         // console.error('Plan update error:', error);
-        res.status(500).json({ message: 'Error updating plan' });
+        res.json({ message: 'Error updating plan' });
     }
 };
 
@@ -388,7 +388,7 @@ export const getCompanyProfile = async (req, res) => {
         const company = await Company.findById(companyId).select('-password');
         
         if (!company) {
-            return res.status(404).json({ message: 'Company not found' });
+            return res.json({ message: 'Company not found' });
         }
 
         res.json({
@@ -403,7 +403,7 @@ export const getCompanyProfile = async (req, res) => {
         });
     } catch (error) {
         // console.error('Get company profile error:', error);
-        res.status(500).json({ message: 'Error fetching company profile' });
+        res.json({ message: 'Error fetching company profile' });
     }
 };
 

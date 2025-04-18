@@ -110,7 +110,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-          </div>
+            </div>
 
           {/* User Actions */}
           <div className="flex items-center space-x-4">

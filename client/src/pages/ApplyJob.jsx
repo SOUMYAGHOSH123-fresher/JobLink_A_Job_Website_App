@@ -65,8 +65,12 @@ const ApplyJob = () => {
     }
   }
     
-  const checkAlreadyApplied = async () => {
-    const hasApplied = userApplications.some(item => item.jobId._id === jobData._id)
+  const checkAlreadyApplied = () => {
+    if (!jobData || !userApplications) return;
+    
+    const hasApplied = userApplications.some(item => 
+        item?.jobId && jobData && item.jobId._id === jobData._id
+    );
     setIsAlreadyApplied(hasApplied);
   }
 
@@ -75,8 +79,8 @@ const ApplyJob = () => {
   }, [id])
 
   useEffect(() => {
-    if (userApplications.length > 0 && jobData) {
-      checkAlreadyApplied()
+    if (userApplications?.length > 0 && jobData) {
+        checkAlreadyApplied()
     }
   }, [jobData, userApplications, id])
 
