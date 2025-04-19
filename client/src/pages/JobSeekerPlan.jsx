@@ -138,7 +138,7 @@ const JobSeekerPlan = () => {
                   ))}
                 </ul>
                 <button
-                  onClick={() => handleSelectPlan(plan.title)}
+                  // onClick={() => handleSelectPlan(plan.title)}
                   className={`w-full py-3 px-6 rounded-full font-medium transition-colors ${
                     plan.highlight
                       ? "bg-indigo-600 hover:bg-indigo-700 text-white"

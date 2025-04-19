@@ -106,7 +106,9 @@ const SubscriptionPlans = () => {
             <p>Valid until: {new Date(currentSubscription.endDate).toLocaleDateString()}</p>
             <p>Job postings remaining: {currentSubscription.jobPostingsRemaining}</p>
             {currentSubscription.isActive && (
-              <button onClick={handleCancelSubscription} className="cancel-btn">
+              <button
+                onClick={handleCancelSubscription}
+                className="cancel-btn">
                 Cancel Subscription
               </button>
             )}

@@ -139,7 +139,7 @@ const RecruiterPlan = () => {
                   ))}
                 </ul>
                 <button
-                  onClick={() => handleSelectPlan(plan.title)}
+                  // onClick={() => handleSelectPlan(plan.title)}
                   className={`w-full py-3 px-6 rounded-full font-medium transition-colors ${
                     plan.highlight
                       ? "bg-pink-600 hover:bg-pink-700 text-white"
