@@ -18,6 +18,9 @@ node_modules/
 .env.production.local
 servers/.env
 client/.env
+*.env.backup
+servers/.env.backup
+client/.env.backup
 
 # Logs
 npm-debug.log*
